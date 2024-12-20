@@ -17,34 +17,45 @@ afterAll(async () => {
 
 describe("Liga API Endpoints", () => {
   const liga = "ligainggris";
+  let id;
 
   test("GET /ligabelanda - Read Footballers Data", async () => {
     const response = await request(app).get("/ligabelanda");
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("footballers");
   });
   test("GET /ligainggris - Read Footballers Data", async () => {
     const response = await request(app).get("/ligainggris");
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("footballers");
   });
   test("GET /ligajerman - Read Footballers Data", async () => {
     const response = await request(app).get("/ligajerman");
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("footballers");
   });
   test("GET /ligaprancis - Read Footballers Data", async () => {
     const response = await request(app).get("/ligaprancis");
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("footballers");
   });
   test("GET /ligaspanyol - Read Footballers Data", async () => {
     const response = await request(app).get("/ligaspanyol");
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("footballers");
   });
@@ -60,9 +71,11 @@ describe("Liga API Endpoints", () => {
       harga: "1000000",
     });
     expect(response.statusCode).toBe(201);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("insertFootballer");
-    let id = response.body.insertFootballer.id;
+    id = response.body.insertFootballer.id;
   });
 
   test("PUT /pemain/:liga/:id ", async () => {
@@ -76,7 +89,10 @@ describe("Liga API Endpoints", () => {
       harga: "1000000",
     });
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status");
+    expect(response.body.status === "success");
     expect(response.body).toHaveProperty("message");
+    expect(response.body).toHaveProperty("updateFootballer");
   });
 
   test("DELETE /pemain/:liga/:id - Menghapus Data Pemain", async () => {
