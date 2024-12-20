@@ -60,7 +60,7 @@ describe("Liga API Endpoints", () => {
     expect(response.body).toHaveProperty("footballers");
   });
 
-  test("POST /pemain/:liga", async () => {
+  test("POST /pemain/:liga - Create Footballer Data", async () => {
     const response = await request(app).post(`/pemain/${liga}`).send({
       nama: "Erling Haaland",
       umur: 20,
@@ -78,7 +78,7 @@ describe("Liga API Endpoints", () => {
     id = response.body.insertFootballer.id;
   });
 
-  test("PUT /pemain/:liga/:id ", async () => {
+  test("PUT /pemain/:liga/:id - Edit Footballer Data", async () => {
     const response = await request(app).put(`/pemain/${liga}/${id}`).send({
       nama: "Erling Haaland",
       umur: 25,
